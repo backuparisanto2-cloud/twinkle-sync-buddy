@@ -8,6 +8,7 @@ import {
   Wallet,
   Coins,
   Map,
+  PieChart,
   Users,
   Settings,
 
