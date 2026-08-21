@@ -212,7 +212,7 @@ function DashboardPage() {
         ) : null}
       </div>
 
-      <div className="mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <div data-tour="dashboard-stats" className="mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
         <Stat label="Total Kamar" value={rooms.data?.length ?? "—"} icon={DoorClosed} />
         <Stat label="Total Unit Barang" value={totalUnit || "—"} icon={Boxes} />
         <Stat label="Perlu Perhatian" value={perluPerhatian} icon={AlertTriangle} tone="danger" />
@@ -239,7 +239,7 @@ function DashboardPage() {
         />
       </div>
 
-      <div className="mt-6 grid gap-4 lg:grid-cols-2">
+      <div data-tour="dashboard-charts" className="mt-6 grid gap-4 lg:grid-cols-2">
         <ChartCard title="Pendapatan vs Pengeluaran per Bulan">
           {monthly.length === 0 ? (
             <p className="text-sm text-muted-foreground">Belum ada transaksi pada periode ini.</p>
