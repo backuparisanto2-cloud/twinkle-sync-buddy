@@ -1,5 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
-import { compressToWebp, webpFileName } from "@/lib/image-compress";
+import { MAX_UPLOAD_BYTES, compressToWebp, webpFileName } from "@/lib/image-compress";
 import { buildItemCode, codePrefix } from "@/lib/item-code";
 
 export const PHOTO_BUCKET = "inventory-photos";
