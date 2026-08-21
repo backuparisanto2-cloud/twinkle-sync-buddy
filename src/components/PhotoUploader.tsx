@@ -7,7 +7,7 @@ import { SignedImage } from "@/components/SignedImage";
 import { removePhoto, uploadPhoto, validatePhotoFile } from "@/lib/inventory";
 
 type Status = "menunggu" | "mengunggah" | "berhasil" | "gagal";
-type Entry = { id: string; name: string; status: Status; message?: string; file: File };
+type Entry = { id: string; name: string; status: Status; message?: string | undefined; file: File };
 
 export function PhotoUploader({
   label,
