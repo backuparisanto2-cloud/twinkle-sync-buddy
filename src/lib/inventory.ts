@@ -269,20 +269,57 @@ export async function seedRoomItems(roomId: string) {
 
 /* ---- photos ---- */
 
+export const MAX_PHOTO_INPUT_BYTES = 10 * 1024 * 1024;
+export const ALLOWED_PHOTO_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+  "image/heic",
+  "image/heif",
+];
+
+/** Validasi tipe & ukuran file sebelum diunggah. Mengembalikan pesan error atau null. */
+export function validatePhotoFile(file: File): string | null {
+  const name = file.name.toLowerCase();
+  const okType =
+    ALLOWED_PHOTO_TYPES.includes(file.type) || /\.(jpe?g|png|webp|heic|heif)$/.test(name);
+  if (!okType) return "Format tidak didukung (gunakan JPG, PNG, WEBP, atau HEIC)";
+  if (file.size === 0) return "File kosong atau rusak";
+  if (file.size > MAX_PHOTO_INPUT_BYTES)
+    return `Ukuran ${(file.size / 1024 / 1024).toFixed(1)}MB melebihi batas 10MB`;
+  return null;
+}
+
 export async function uploadPhoto(file: File, folder: string): Promise<string> {
-  const blob = await compressToWebp(file);
+  const invalid = validatePhotoFile(file);
+  if (invalid) throw new Error(invalid);
+
+  let blob: Blob;
+  try {
+    blob = await compressToWebp(file);
+  } catch {
+    throw new Error("Gagal mengompres gambar — coba format JPG atau PNG");
+  }
+  if (blob.size > MAX_UPLOAD_BYTES) {
+    throw new Error("Gambar tetap di atas 300KB setelah kompresi — coba foto beresolusi lebih kecil");
+  }
+
   const path = `${folder}/${webpFileName(file.name)}`;
   const { error } = await supabase.storage.from(PHOTO_BUCKET).upload(path, blob, {
     contentType: "image/webp",
     upsert: false,
   });
-  if (error) throw new Error(error.message);
+  if (error) throw new Error(`Gagal mengunggah: ${error.message}`);
   return path;
 }
 
 export async function removePhoto(path: string) {
-  await supabase.storage.from(PHOTO_BUCKET).remove([path]);
+  const { error } = await supabase.storage.from(PHOTO_BUCKET).remove([path]);
+  urlCache.delete(path);
+  if (error) throw new Error(`Gagal menghapus foto: ${error.message}`);
 }
+
 
 const urlCache = new Map<string, string>();
 
