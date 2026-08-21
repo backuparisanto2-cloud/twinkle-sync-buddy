@@ -205,7 +205,7 @@ export type Database = {
       room_items: {
         Row: {
           brand: string | null
-          code: string | null
+          code: string
           condition: string
           created_at: string
           id: string
@@ -213,7 +213,7 @@ export type Database = {
           name: string
           notes: string | null
           photos: Json
-          purchase_date: string | null
+          purchase_date: string
           purchase_price: number | null
           quantity: number
           receipts: Json
@@ -225,7 +225,7 @@ export type Database = {
         }
         Insert: {
           brand?: string | null
-          code?: string | null
+          code: string
           condition?: string
           created_at?: string
           id?: string
@@ -233,7 +233,7 @@ export type Database = {
           name: string
           notes?: string | null
           photos?: Json
-          purchase_date?: string | null
+          purchase_date: string
           purchase_price?: number | null
           quantity?: number
           receipts?: Json
@@ -245,7 +245,7 @@ export type Database = {
         }
         Update: {
           brand?: string | null
-          code?: string | null
+          code?: string
           condition?: string
           created_at?: string
           id?: string
@@ -253,7 +253,7 @@ export type Database = {
           name?: string
           notes?: string | null
           photos?: Json
-          purchase_date?: string | null
+          purchase_date?: string
           purchase_price?: number | null
           quantity?: number
           receipts?: Json
@@ -304,7 +304,7 @@ export type Database = {
         Row: {
           brand: string | null
           category: string
-          code: string | null
+          code: string
           condition: string
           created_at: string
           id: string
@@ -312,7 +312,7 @@ export type Database = {
           name: string
           notes: string | null
           photos: Json
-          purchase_date: string | null
+          purchase_date: string
           purchase_price: number | null
           quantity: number
           receipts: Json
@@ -324,7 +324,7 @@ export type Database = {
         Insert: {
           brand?: string | null
           category?: string
-          code?: string | null
+          code: string
           condition?: string
           created_at?: string
           id?: string
@@ -332,7 +332,7 @@ export type Database = {
           name: string
           notes?: string | null
           photos?: Json
-          purchase_date?: string | null
+          purchase_date: string
           purchase_price?: number | null
           quantity?: number
           receipts?: Json
@@ -344,7 +344,7 @@ export type Database = {
         Update: {
           brand?: string | null
           category?: string
-          code?: string | null
+          code?: string
           condition?: string
           created_at?: string
           id?: string
@@ -352,7 +352,7 @@ export type Database = {
           name?: string
           notes?: string | null
           photos?: Json
-          purchase_date?: string | null
+          purchase_date?: string
           purchase_price?: number | null
           quantity?: number
           receipts?: Json
@@ -659,7 +659,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      inventory_name_slug: { Args: { item_name: string }; Returns: string }
     }
     Enums: {
       [_ in never]: never
