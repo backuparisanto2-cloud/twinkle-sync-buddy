@@ -7,7 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { SplashScreen } from "@/components/SplashScreen";
@@ -135,12 +135,15 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const [splashDone, setSplashDone] = useState(false);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SplashScreen />
+      <SplashScreen onDone={() => setSplashDone(true)} />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className={splashDone ? undefined : "pointer-events-none opacity-0"} aria-hidden={!splashDone}>
+        <Outlet />
+      </div>
       <Toaster />
     </QueryClientProvider>
 

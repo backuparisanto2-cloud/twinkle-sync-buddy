@@ -15,6 +15,7 @@ import {
 
   Menu,
   Type,
+  HelpCircle,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
@@ -27,6 +28,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { PageTour, useTourTrigger } from "@/components/PageTour";
 import { TEXT_SIZES, useTextSize } from "@/lib/text-size";
 
 const nav = [
@@ -88,9 +90,11 @@ export function AppShell({
   children: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
+  const startTour = useTourTrigger();
 
   return (
     <div className="min-h-screen bg-background pb-10">
+      <PageTour />
       <header className="border-b border-gold-line bg-card/90 backdrop-blur">
         <div className="mx-auto grid max-w-5xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-4 sm:gap-6">
           <div className="flex min-w-0 items-center gap-3">
@@ -112,7 +116,7 @@ export function AppShell({
           </div>
 
           <div className="flex items-center gap-3">
-            <nav className="hidden gap-1 md:flex">
+            <nav data-tour="nav" className="hidden gap-1 md:flex">
               {nav.map((item) => (
                 <Link
                   key={item.to}
@@ -124,6 +128,17 @@ export function AppShell({
                 </Link>
               ))}
             </nav>
+            <Button
+              variant="outline"
+              size="icon"
+              aria-label="Tutorial halaman ini"
+              title="Tutorial halaman ini"
+              data-tour="help"
+              onClick={startTour}
+              className="h-11 w-11"
+            >
+              <HelpCircle className="h-5 w-5" />
+            </Button>
             <div className="hidden md:block">
               <TextSizeControl compact />
             </div>
@@ -170,7 +185,7 @@ export function AppShell({
       </header>
 
       <main className="mx-auto max-w-5xl px-4 py-6">
-        <div className="mb-6">
+        <div className="mb-6" data-tour="page-title">
           <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             {title}
           </h1>
