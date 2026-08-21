@@ -12,22 +12,37 @@ const splashSrcSet = [
 
 const STORAGE_KEY = "lavin-splash-shown";
 
-export function SplashScreen() {
-  const [visible, setVisible] = useState(false);
+export function SplashScreen({ onDone }: { onDone?: () => void } = {}) {
+  const [visible, setVisible] = useState(true);
   const [leaving, setLeaving] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (window.sessionStorage.getItem(STORAGE_KEY) === "1") return;
+    if (window.sessionStorage.getItem(STORAGE_KEY) === "1") {
+      setVisible(false);
+      onDone?.();
+      return;
+    }
     window.sessionStorage.setItem(STORAGE_KEY, "1");
-    setVisible(true);
     const fade = window.setTimeout(() => setLeaving(true), 2200);
-    const hide = window.setTimeout(() => setVisible(false), 2900);
+    const hide = window.setTimeout(() => {
+      setVisible(false);
+      onDone?.();
+    }, 2900);
     return () => {
       window.clearTimeout(fade);
       window.clearTimeout(hide);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const skip = () => {
+    setLeaving(true);
+    window.setTimeout(() => {
+      setVisible(false);
+      onDone?.();
+    }, 500);
+  };
 
   if (!visible) return null;
 
@@ -35,7 +50,7 @@ export function SplashScreen() {
     <div
       role="status"
       aria-label="Memuat aplikasi inventaris Lavin Kost Purwokerto"
-      onClick={() => setLeaving(true)}
+      onClick={skip}
       className={`fixed inset-0 z-[100] overflow-hidden bg-[#0b0d10] transition-opacity duration-700 ${
         leaving ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
