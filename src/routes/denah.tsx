@@ -167,7 +167,7 @@ function FloorPlanPage() {
       title="Denah Interaktif"
       subtitle="Peta lantai 1-3 dan rooftop. Warna area menunjukkan status hunian, titik merah menandai barang rusak."
     >
-      <div className="mb-4 flex gap-2 overflow-x-auto pb-1">
+      <div data-tour="denah-floors" className="mb-4 flex gap-2 overflow-x-auto pb-1">
         {FLOOR_PLANS.map((item) => (
           <button
             key={item.key}
@@ -187,7 +187,7 @@ function FloorPlanPage() {
         ))}
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
+      <div data-tour="denah-map" className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
         <div>
           <FloorPlanMap
             plan={plan}

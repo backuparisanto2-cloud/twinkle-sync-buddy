@@ -151,6 +151,7 @@ function RoomsPage() {
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
             placeholder="Cari nomor kamar atau nama barang..."
+            data-tour="kamar-search"
             className="h-11 pl-9"
             aria-label="Cari kamar atau barang"
           />

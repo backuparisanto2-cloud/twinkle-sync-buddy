@@ -177,7 +177,7 @@ function DashboardPage() {
       title="Dashboard Ringkasan"
       subtitle="Ringkasan kamar, barang, dan arus kas dengan filter periode."
     >
-      <div className="gold-card flex flex-wrap items-end gap-2 rounded-xl p-4">
+      <div data-tour="dashboard-period" className="gold-card flex flex-wrap items-end gap-2 rounded-xl p-4">
         <div className="flex flex-wrap gap-2">
           {JOURNAL_PRESETS.map((p) => (
             <Button
