@@ -163,9 +163,49 @@ export type Database = {
           },
         ]
       }
+      other_incomes: {
+        Row: {
+          amount: number
+          attachments: Json
+          created_at: string
+          description: string | null
+          id: string
+          income_date: string
+          name: string
+          payer: string | null
+          payment_method: string
+          updated_at: string
+        }
+        Insert: {
+          amount?: number
+          attachments?: Json
+          created_at?: string
+          description?: string | null
+          id?: string
+          income_date?: string
+          name: string
+          payer?: string | null
+          payment_method?: string
+          updated_at?: string
+        }
+        Update: {
+          amount?: number
+          attachments?: Json
+          created_at?: string
+          description?: string | null
+          id?: string
+          income_date?: string
+          name?: string
+          payer?: string | null
+          payment_method?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       room_items: {
         Row: {
           brand: string | null
+          code: string | null
           condition: string
           created_at: string
           id: string
@@ -185,6 +225,7 @@ export type Database = {
         }
         Insert: {
           brand?: string | null
+          code?: string | null
           condition?: string
           created_at?: string
           id?: string
@@ -204,6 +245,7 @@ export type Database = {
         }
         Update: {
           brand?: string | null
+          code?: string | null
           condition?: string
           created_at?: string
           id?: string
@@ -262,6 +304,7 @@ export type Database = {
         Row: {
           brand: string | null
           category: string
+          code: string | null
           condition: string
           created_at: string
           id: string
@@ -281,6 +324,7 @@ export type Database = {
         Insert: {
           brand?: string | null
           category?: string
+          code?: string | null
           condition?: string
           created_at?: string
           id?: string
@@ -300,6 +344,7 @@ export type Database = {
         Update: {
           brand?: string | null
           category?: string
+          code?: string | null
           condition?: string
           created_at?: string
           id?: string
