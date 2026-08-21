@@ -30,6 +30,7 @@ import { TEXT_SIZES, useTextSize } from "@/lib/text-size";
 
 const nav = [
   { to: "/", label: "Ringkasan", icon: LayoutDashboard },
+  { to: "/dashboard", label: "Dashboard", icon: PieChart },
   { to: "/kamar", label: "Kamar", icon: DoorClosed },
   { to: "/denah", label: "Denah", icon: Map },
   { to: "/fasilitas", label: "Fasilitas Utama", icon: Wrench },
