@@ -101,111 +101,9 @@ export type Database = {
         }
         Relationships: []
       }
-      incomes: {
-        Row: {
-          amount: number
-          attachments: Json
-          created_at: string
-          end_date: string | null
-          id: string
-          notes: string | null
-          payment_date: string
-          payment_method: string
-          period_months: number
-          period_type: string
-          room_number: string | null
-          start_date: string
-          tenant_id: string
-          tenant_name: string
-          updated_at: string
-        }
-        Insert: {
-          amount?: number
-          attachments?: Json
-          created_at?: string
-          end_date?: string | null
-          id?: string
-          notes?: string | null
-          payment_date?: string
-          payment_method?: string
-          period_months?: number
-          period_type?: string
-          room_number?: string | null
-          start_date?: string
-          tenant_id: string
-          tenant_name: string
-          updated_at?: string
-        }
-        Update: {
-          amount?: number
-          attachments?: Json
-          created_at?: string
-          end_date?: string | null
-          id?: string
-          notes?: string | null
-          payment_date?: string
-          payment_method?: string
-          period_months?: number
-          period_type?: string
-          room_number?: string | null
-          start_date?: string
-          tenant_id?: string
-          tenant_name?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "incomes_tenant_id_fkey"
-            columns: ["tenant_id"]
-            isOneToOne: false
-            referencedRelation: "tenants"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      other_incomes: {
-        Row: {
-          amount: number
-          attachments: Json
-          created_at: string
-          description: string | null
-          id: string
-          income_date: string
-          name: string
-          payer: string | null
-          payment_method: string
-          updated_at: string
-        }
-        Insert: {
-          amount?: number
-          attachments?: Json
-          created_at?: string
-          description?: string | null
-          id?: string
-          income_date?: string
-          name: string
-          payer?: string | null
-          payment_method?: string
-          updated_at?: string
-        }
-        Update: {
-          amount?: number
-          attachments?: Json
-          created_at?: string
-          description?: string | null
-          id?: string
-          income_date?: string
-          name?: string
-          payer?: string | null
-          payment_method?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
       room_items: {
         Row: {
           brand: string | null
-          code: string | null
           condition: string
           created_at: string
           id: string
@@ -225,7 +123,6 @@ export type Database = {
         }
         Insert: {
           brand?: string | null
-          code?: string | null
           condition?: string
           created_at?: string
           id?: string
@@ -245,7 +142,6 @@ export type Database = {
         }
         Update: {
           brand?: string | null
-          code?: string | null
           condition?: string
           created_at?: string
           id?: string
@@ -304,7 +200,6 @@ export type Database = {
         Row: {
           brand: string | null
           category: string
-          code: string | null
           condition: string
           created_at: string
           id: string
@@ -324,7 +219,6 @@ export type Database = {
         Insert: {
           brand?: string | null
           category?: string
-          code?: string | null
           condition?: string
           created_at?: string
           id?: string
@@ -344,7 +238,6 @@ export type Database = {
         Update: {
           brand?: string | null
           category?: string
-          code?: string | null
           condition?: string
           created_at?: string
           id?: string
@@ -362,297 +255,6 @@ export type Database = {
           warranty_until?: string | null
         }
         Relationships: []
-      }
-      tenant_emergency_contacts: {
-        Row: {
-          created_at: string
-          id: string
-          name: string
-          notes: string | null
-          phone: string
-          relationship: string | null
-          tenant_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          name: string
-          notes?: string | null
-          phone: string
-          relationship?: string | null
-          tenant_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          name?: string
-          notes?: string | null
-          phone?: string
-          relationship?: string | null
-          tenant_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "tenant_emergency_contacts_tenant_id_fkey"
-            columns: ["tenant_id"]
-            isOneToOne: false
-            referencedRelation: "tenants"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      tenant_payments: {
-        Row: {
-          amount: number
-          attachments: Json
-          created_at: string
-          id: string
-          notes: string | null
-          payment_date: string
-          payment_method: string
-          period_end: string | null
-          period_start: string | null
-          period_type: string
-          tenant_id: string
-          updated_at: string
-        }
-        Insert: {
-          amount?: number
-          attachments?: Json
-          created_at?: string
-          id?: string
-          notes?: string | null
-          payment_date?: string
-          payment_method?: string
-          period_end?: string | null
-          period_start?: string | null
-          period_type?: string
-          tenant_id: string
-          updated_at?: string
-        }
-        Update: {
-          amount?: number
-          attachments?: Json
-          created_at?: string
-          id?: string
-          notes?: string | null
-          payment_date?: string
-          payment_method?: string
-          period_end?: string | null
-          period_start?: string | null
-          period_type?: string
-          tenant_id?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "tenant_payments_tenant_id_fkey"
-            columns: ["tenant_id"]
-            isOneToOne: false
-            referencedRelation: "tenants"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      tenant_phones: {
-        Row: {
-          created_at: string
-          id: string
-          is_primary: boolean
-          label: string | null
-          phone: string
-          tenant_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          is_primary?: boolean
-          label?: string | null
-          phone: string
-          tenant_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          is_primary?: boolean
-          label?: string | null
-          phone?: string
-          tenant_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "tenant_phones_tenant_id_fkey"
-            columns: ["tenant_id"]
-            isOneToOne: false
-            referencedRelation: "tenants"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      tenant_status_history: {
-        Row: {
-          changed_at: string
-          id: string
-          new_room: string | null
-          new_status: string
-          note: string | null
-          old_room: string | null
-          old_status: string | null
-          tenant_id: string | null
-          tenant_name: string | null
-        }
-        Insert: {
-          changed_at?: string
-          id?: string
-          new_room?: string | null
-          new_status: string
-          note?: string | null
-          old_room?: string | null
-          old_status?: string | null
-          tenant_id?: string | null
-          tenant_name?: string | null
-        }
-        Update: {
-          changed_at?: string
-          id?: string
-          new_room?: string | null
-          new_status?: string
-          note?: string | null
-          old_room?: string | null
-          old_status?: string | null
-          tenant_id?: string | null
-          tenant_name?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "tenant_status_history_tenant_id_fkey"
-            columns: ["tenant_id"]
-            isOneToOne: false
-            referencedRelation: "tenants"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      tenant_vehicles: {
-        Row: {
-          brand_model: string | null
-          created_at: string
-          id: string
-          plate_number: string | null
-          tenant_id: string
-          vehicle_type: string
-        }
-        Insert: {
-          brand_model?: string | null
-          created_at?: string
-          id?: string
-          plate_number?: string | null
-          tenant_id: string
-          vehicle_type: string
-        }
-        Update: {
-          brand_model?: string | null
-          created_at?: string
-          id?: string
-          plate_number?: string | null
-          tenant_id?: string
-          vehicle_type?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "tenant_vehicles_tenant_id_fkey"
-            columns: ["tenant_id"]
-            isOneToOne: false
-            referencedRelation: "tenants"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      tenants: {
-        Row: {
-          check_in_date: string | null
-          contact: string | null
-          created_at: string
-          current_address: string | null
-          documents: Json
-          due_date: string | null
-          email: string | null
-          home_address: string | null
-          id: string
-          maps_home_url: string | null
-          maps_school_url: string | null
-          name: string
-          nik: string | null
-          notes: string | null
-          rent_period: string | null
-          room_id: string | null
-          room_number: string | null
-          rules_agreed: boolean
-          rules_agreed_at: string | null
-          school_work_address: string | null
-          status: string
-          student_card: string | null
-          updated_at: string
-        }
-        Insert: {
-          check_in_date?: string | null
-          contact?: string | null
-          created_at?: string
-          current_address?: string | null
-          documents?: Json
-          due_date?: string | null
-          email?: string | null
-          home_address?: string | null
-          id?: string
-          maps_home_url?: string | null
-          maps_school_url?: string | null
-          name: string
-          nik?: string | null
-          notes?: string | null
-          rent_period?: string | null
-          room_id?: string | null
-          room_number?: string | null
-          rules_agreed?: boolean
-          rules_agreed_at?: string | null
-          school_work_address?: string | null
-          status?: string
-          student_card?: string | null
-          updated_at?: string
-        }
-        Update: {
-          check_in_date?: string | null
-          contact?: string | null
-          created_at?: string
-          current_address?: string | null
-          documents?: Json
-          due_date?: string | null
-          email?: string | null
-          home_address?: string | null
-          id?: string
-          maps_home_url?: string | null
-          maps_school_url?: string | null
-          name?: string
-          nik?: string | null
-          notes?: string | null
-          rent_period?: string | null
-          room_id?: string | null
-          room_number?: string | null
-          rules_agreed?: boolean
-          rules_agreed_at?: string | null
-          school_work_address?: string | null
-          status?: string
-          student_card?: string | null
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "tenants_room_id_fkey"
-            columns: ["room_id"]
-            isOneToOne: false
-            referencedRelation: "rooms"
-            referencedColumns: ["id"]
-          },
-        ]
       }
     }
     Views: {
