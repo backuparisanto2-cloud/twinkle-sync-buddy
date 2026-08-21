@@ -10,33 +10,167 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DenahRouteImport } from './routes/denah'
+import { Route as FasilitasRouteImport } from './routes/fasilitas'
+import { Route as JurnalRouteImport } from './routes/jurnal'
+import { Route as KelolaRouteImport } from './routes/kelola'
+import { Route as LaporanRouteImport } from './routes/laporan'
+import { Route as PendapatanRouteImport } from './routes/pendapatan'
+import { Route as PengeluaranRouteImport } from './routes/pengeluaran'
+import { Route as TenantRouteImport } from './routes/tenant'
+import { Route as KamarIndexRouteImport } from './routes/kamar.index'
+import { Route as KamarNomorRouteImport } from './routes/kamar.$nomor'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DenahRoute = DenahRouteImport.update({
+  id: '/denah',
+  path: '/denah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FasilitasRoute = FasilitasRouteImport.update({
+  id: '/fasilitas',
+  path: '/fasilitas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JurnalRoute = JurnalRouteImport.update({
+  id: '/jurnal',
+  path: '/jurnal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KelolaRoute = KelolaRouteImport.update({
+  id: '/kelola',
+  path: '/kelola',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaporanRoute = LaporanRouteImport.update({
+  id: '/laporan',
+  path: '/laporan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PendapatanRoute = PendapatanRouteImport.update({
+  id: '/pendapatan',
+  path: '/pendapatan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PengeluaranRoute = PengeluaranRouteImport.update({
+  id: '/pengeluaran',
+  path: '/pengeluaran',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TenantRoute = TenantRouteImport.update({
+  id: '/tenant',
+  path: '/tenant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KamarIndexRoute = KamarIndexRouteImport.update({
+  id: '/kamar/',
+  path: '/kamar/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KamarNomorRoute = KamarNomorRouteImport.update({
+  id: '/kamar/$nomor',
+  path: '/kamar/$nomor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/denah': typeof DenahRoute
+  '/fasilitas': typeof FasilitasRoute
+  '/jurnal': typeof JurnalRoute
+  '/kelola': typeof KelolaRoute
+  '/laporan': typeof LaporanRoute
+  '/pendapatan': typeof PendapatanRoute
+  '/pengeluaran': typeof PengeluaranRoute
+  '/tenant': typeof TenantRoute
+  '/kamar/$nomor': typeof KamarNomorRoute
+  '/kamar/': typeof KamarIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/denah': typeof DenahRoute
+  '/fasilitas': typeof FasilitasRoute
+  '/jurnal': typeof JurnalRoute
+  '/kelola': typeof KelolaRoute
+  '/laporan': typeof LaporanRoute
+  '/pendapatan': typeof PendapatanRoute
+  '/pengeluaran': typeof PengeluaranRoute
+  '/tenant': typeof TenantRoute
+  '/kamar/$nomor': typeof KamarNomorRoute
+  '/kamar': typeof KamarIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/denah': typeof DenahRoute
+  '/fasilitas': typeof FasilitasRoute
+  '/jurnal': typeof JurnalRoute
+  '/kelola': typeof KelolaRoute
+  '/laporan': typeof LaporanRoute
+  '/pendapatan': typeof PendapatanRoute
+  '/pengeluaran': typeof PengeluaranRoute
+  '/tenant': typeof TenantRoute
+  '/kamar/$nomor': typeof KamarNomorRoute
+  '/kamar/': typeof KamarIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/denah'
+    | '/fasilitas'
+    | '/jurnal'
+    | '/kelola'
+    | '/laporan'
+    | '/pendapatan'
+    | '/pengeluaran'
+    | '/tenant'
+    | '/kamar/$nomor'
+    | '/kamar/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/denah'
+    | '/fasilitas'
+    | '/jurnal'
+    | '/kelola'
+    | '/laporan'
+    | '/pendapatan'
+    | '/pengeluaran'
+    | '/tenant'
+    | '/kamar/$nomor'
+    | '/kamar'
+  id:
+    | '__root__'
+    | '/'
+    | '/denah'
+    | '/fasilitas'
+    | '/jurnal'
+    | '/kelola'
+    | '/laporan'
+    | '/pendapatan'
+    | '/pengeluaran'
+    | '/tenant'
+    | '/kamar/$nomor'
+    | '/kamar/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DenahRoute: typeof DenahRoute
+  FasilitasRoute: typeof FasilitasRoute
+  JurnalRoute: typeof JurnalRoute
+  KelolaRoute: typeof KelolaRoute
+  LaporanRoute: typeof LaporanRoute
+  PendapatanRoute: typeof PendapatanRoute
+  PengeluaranRoute: typeof PengeluaranRoute
+  TenantRoute: typeof TenantRoute
+  KamarNomorRoute: typeof KamarNomorRoute
+  KamarIndexRoute: typeof KamarIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +182,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/denah': {
+      id: '/denah'
+      path: '/denah'
+      fullPath: '/denah'
+      preLoaderRoute: typeof DenahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fasilitas': {
+      id: '/fasilitas'
+      path: '/fasilitas'
+      fullPath: '/fasilitas'
+      preLoaderRoute: typeof FasilitasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jurnal': {
+      id: '/jurnal'
+      path: '/jurnal'
+      fullPath: '/jurnal'
+      preLoaderRoute: typeof JurnalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kelola': {
+      id: '/kelola'
+      path: '/kelola'
+      fullPath: '/kelola'
+      preLoaderRoute: typeof KelolaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/laporan': {
+      id: '/laporan'
+      path: '/laporan'
+      fullPath: '/laporan'
+      preLoaderRoute: typeof LaporanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pendapatan': {
+      id: '/pendapatan'
+      path: '/pendapatan'
+      fullPath: '/pendapatan'
+      preLoaderRoute: typeof PendapatanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pengeluaran': {
+      id: '/pengeluaran'
+      path: '/pengeluaran'
+      fullPath: '/pengeluaran'
+      preLoaderRoute: typeof PengeluaranRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tenant': {
+      id: '/tenant'
+      path: '/tenant'
+      fullPath: '/tenant'
+      preLoaderRoute: typeof TenantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kamar/': {
+      id: '/kamar/'
+      path: '/kamar'
+      fullPath: '/kamar/'
+      preLoaderRoute: typeof KamarIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kamar/$nomor': {
+      id: '/kamar/$nomor'
+      path: '/kamar/$nomor'
+      fullPath: '/kamar/$nomor'
+      preLoaderRoute: typeof KamarNomorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DenahRoute: DenahRoute,
+  FasilitasRoute: FasilitasRoute,
+  JurnalRoute: JurnalRoute,
+  KelolaRoute: KelolaRoute,
+  LaporanRoute: LaporanRoute,
+  PendapatanRoute: PendapatanRoute,
+  PengeluaranRoute: PengeluaranRoute,
+  TenantRoute: TenantRoute,
+  KamarNomorRoute: KamarNomorRoute,
+  KamarIndexRoute: KamarIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
