@@ -64,7 +64,7 @@ export function SplashScreen({ onDone }: { onDone?: () => void } = {}) {
         fetchPriority="high"
         decoding="async"
         alt="Bangunan Lavin Kost Purwokerto"
-        className="absolute inset-0 h-full w-full animate-[splash-zoom_6s_ease-out_forwards] object-cover object-center"
+        className="absolute inset-0 h-full w-full animate-[splash-zoom_6s_ease-out_forwards] object-contain object-top sm:object-cover sm:object-center"
       />
 
       <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d10] via-[#0b0d10]/55 to-[#0b0d10]/15" />
